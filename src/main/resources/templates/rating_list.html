@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+    <title>Rating List</title>
+    <style>
+		table {
+		  border-collapse: collapse;
+		  width: 100%;
+		}
+		
+		th, td {
+		  text-align: left;
+		  padding: 8px;
+		}
+		
+		tr:nth-child(even) {background-color: #f2f2f2;}
+	</style>
+</head>
+<body>
+	<a href="/movies/new">Add a new movie review</a><br>
+	<hr>
+	<h3>Recently Added</h3>
+	<table>
+		<tr>
+			<th>Movie Title</th>
+			<th>Rating</th>
+			<th>Name</th>
+			<th>Date</th>
+		</tr>
+		<!--  Only displays the most recent rating based off of the ID's -->
+		<tr th:each="rating : ${ratings}" th:if="${rating.id == mostRecentRating}")>
+			<td th:text="${rating.title}"></td>
+			<td th:text="${rating.rating}"></td>
+			<td th:text="${rating.name}"></td>
+			<td th:text="${rating.date}"></td>
+		</tr>
+	</table>
+	<hr>
+	<h3>Ratings by Movie Title</h3>
+	<table>
+		<tr>
+			<th>Movie Title</th>
+			<th>Rating</th>
+			<th>Name</th>
+			<th>Date</th>
+		</tr>
+		<tr th:each="rating : ${ratings}">
+			<td th:text="${rating.title}"></td>
+			<td th:text="${rating.rating}"></td>
+			<td th:text="${rating.name}"></td>
+			<td th:text="${rating.date}"></td>
+		</tr>
+	</table>
+</body>
+</html>
