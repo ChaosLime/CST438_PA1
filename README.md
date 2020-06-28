@@ -2,37 +2,37 @@ CST438 Week 1 Programming Assignment
 
 **Objectives:**
 
-Practice coding a Spring controller class that returns data in html format
-use Spring templates to create parameterized html pages and html forms
-code Spring entity classes and use spring repository to read/write data to a database
+* Practice coding a Spring controller class that returns data in html format
+* Use Spring templates to create parameterized html pages and html forms
+* Code Spring entity classes and use spring repository to read/write data to a database
 
 **Requirements:**
 
-Define a model class for movie ratings.
-It should contain attributes title, rating, name of person who posted the rating, date and time of
+* Define a model class for movie ratings.
+* It should contain attributes title, rating, name of person who posted the rating, date and time of
 posting. Annotate the model class with @Entity and don’t forget it needs a primary key field
 annotated @Id and getters and setters for all fields.
-Create a form that allows a user to enter their name, movie title and rating (1-5).
-Create a controller with methods
-
-Controller method URL mapping
-display all ratings sorted by movie title and most
-recent rating first. See below about how to
-specify ORDER BY using repository.
+* Create a form that allows a user to enter their name, movie title and rating (1-5).
+* Create a controller with methods
 
 ```
 @GetMapping(“/movies”)
 ```
-Process the posting of a new rating
-add the current time of posting
-in the case of validation errors, return the
-form with error messages to the user
+Display all ratings sorted by movie title and most
+recent rating first. See below about how to specify ORDER BY using repository.
 
 ```
 @PostMapping(“/movies/new”)
 ```
+Process the posting of a new rating
+* Add the current time of posting
+* In the case of validation errors, return the form with error messages to the user
 
-Return a blank movie rating form @GetMapping(“movies/new”)
+```
+@GetMapping(“movies/new”)
+```
+
+Return a blank movie rating form 
 
 **Specifying ORDER BY**
 
