@@ -19,36 +19,34 @@ public class movieController {
   */
   long newestID = 0;
   
-	@Autowired
-	MovieRatingRepository MovieRatingRepository;
-	
-	@GetMapping("/movies/new")
-  public String createRating( Model model) {
-	  Rating rating = new Rating();
-	  model.addAttribute("rating", rating);
-	  return "rating_form";
+  @Autowired
+  MovieRatingRepository movieRatingRepository;
+  
+  @GetMapping("/movies/new")
+  public String createRating(Model model) {
+    Rating rating = new Rating();
+    model.addAttribute("rating", rating);
+    return "rating_form";
   }
   
   @PostMapping("/movies")
   public String processRatingForm(@Valid Rating rating, BindingResult result, Model model) {
-	  if(result.hasErrors()){
-		  return "rating_form";
-	  }
-	  MovieRatingRepository.save(rating);
-	  newestID = rating.getId();
-	  return ("redirect:/movies");
+    if(result.hasErrors()){
+      return "rating_form";
+    }
+    movieRatingRepository.save(rating);
+    newestID = rating.getId();
+    return ("redirect:/movies");
   }
-
 
   @GetMapping("/movies")
   public String getAllRatings(Model model) {
     //displays all ratings by title and chronological order desc
-  	Iterable<Rating> rating = MovieRatingRepository.findAll();
-  	model.addAttribute("ratings", rating);
-  	//inputs value for the most recent new rating and returns it when added.
-  	model.addAttribute("mostRecentRating",newestID);
-  	
-  	return "rating_list";	
+    Iterable<Rating> rating = movieRatingRepository.findAll();
+    model.addAttribute("ratings", rating);
+    //inputs value for the most recent new rating and returns it when added.
+    model.addAttribute("mostRecentRating", newestID);
+    
+    return "rating_list";	
   }
-  
 }
