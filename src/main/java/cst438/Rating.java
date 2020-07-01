@@ -15,7 +15,7 @@ public class Rating {
   @Id
   @GeneratedValue
   private long id;
-	
+  
   @NotNull
   @Size(min = 3, max = 25)
   private String title;
@@ -47,8 +47,13 @@ public class Rating {
     this.date = date;
   }
 
-  public long getId() { return id;}
-  public void setId(long id) { this.id = id;}
+  public long getId() {
+    return id;
+  }
+  
+  public void setId(long id) {
+    this.id = id;
+  }
   
   public String getTitle() {
     return title;
@@ -81,7 +86,5 @@ public class Rating {
   public void setDate(String date) {
     date = new Date().toString();
     this.date = date;
-  }
-  
-  
+  }  
 }
